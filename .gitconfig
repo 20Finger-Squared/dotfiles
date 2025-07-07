@@ -169,8 +169,8 @@
 [branch]
   autosetuprebase = always
 [core]
-	pager = lvim +Man!
-  editor = lvim
+	pager = nvim +Man!
+  editor = nvim
 
 [gpg] 
     format = ssh
