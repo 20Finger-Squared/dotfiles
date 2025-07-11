@@ -4,19 +4,13 @@ vim.g.maplocalleader = " "
 
 local opts = { noremap = true, silent = true }
 
+vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true, desc = "Find file" })
 -- Toggle nvim-tree with <leader>e
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
 
 -- Close current window with <leader>q
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", opts)
 
--- System clipboard yanking
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)  -- Yank to system clipboard
-vim.keymap.set("n", "<leader>Y", '"+yy', opts)          -- Yank entire line to clipboard
-
--- System clipboard pasting
-vim.keymap.set("n", "<leader>p", '"+p', opts)           -- Paste after cursor
-vim.keymap.set("n", "<leader>P", '"+P', opts)           -- Paste before cursor
 
 -- Optional: delete to blackhole to avoid overwriting clipboard
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', opts)  -- Delete without affecting registers
@@ -30,6 +24,13 @@ vim.keymap.set("n", "<leader>q", "<cmd>quit<CR>", { noremap = true, silent = tru
 
 -- Open a vertical split + start a terminal with <leader>t
 vim.keymap.set("n", "<leader>t", "<cmd>vsplit | terminal<CR>", { noremap = true, silent = true })
+-- Yank to system clipboard
+vim.keymap.set({ "n", "v" }, "y", '"+y', { noremap = true, desc = "Yank to clipboard" })
+vim.keymap.set("n", "yy", '"+yy', { noremap = true, desc = "Yank line to clipboard" })
+
+-- Paste from system clipboard
+vim.keymap.set({ "n", "v" }, "p", '"+p', { noremap = true, desc = "Paste from clipboard" })
+vim.keymap.set({ "n", "v" }, "P", '"+P', { noremap = true, desc = "Paste before from clipboard" })
 
 -- Command line enhancements
 vim.keymap.set("n", ":", "q:$a", { desc = "Command line with cursor at end" })
@@ -69,3 +70,4 @@ vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move to left split f
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move to below split from terminal" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move to above split from terminal" })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right split from terminal" })
+vim.keymap.set("n", "<leader>3", "<cmd>lua toggle_bottom_term()<CR>", { desc = "Toggle bottom terminal" })
