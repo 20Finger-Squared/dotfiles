@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true, desc = "Find file" })
 -- Toggle nvim-tree with <leader>e
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
 
