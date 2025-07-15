@@ -23,6 +23,20 @@ return {
 
     telescope.setup({
       defaults = {
+	          mappings = {
+      i = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+        ["<C-h>"] = "preview_scrolling_left",
+        ["<C-l>"] = "preview_scrolling_right",
+      },
+      n = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+        ["<C-h>"] = "preview_scrolling_left",
+        ["<C-l>"] = "preview_scrolling_right",
+      },
+    }
         -- You can customize default settings here
         -- For example, to adjust the preview window
         -- preview = {
