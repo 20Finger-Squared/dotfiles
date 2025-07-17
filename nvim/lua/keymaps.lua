@@ -21,8 +21,6 @@ vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", { noremap = true, silent = tr
 -- Quit current window with <leader>q
 vim.keymap.set("n", "<leader>q", "<cmd>quit<CR>", { noremap = true, silent = true })
 
--- Open a vertical split + start a terminal with <leader>t
-vim.keymap.set("n", "<leader>t", "<cmd>vsplit | terminal<CR>", { noremap = true, silent = true })
 -- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "y", '"+y', { noremap = true, desc = "Yank to clipboard" })
 vim.keymap.set("n", "yy", '"+yy', { noremap = true, desc = "Yank line to clipboard" })

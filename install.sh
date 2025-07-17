@@ -17,9 +17,12 @@ brew install git
 git pull https://github.com/eclipxia/dotfiles
 
 if [ -d ~/.config/nvim ] ; then 
-	mv ~/.config/nvim ~/.config/nvim_old; cp -r ~/dotfiles/nvim ~/.config/nvim
+	mv ~/.config/nvim ~/.config/nvim_old 
+	cp -r ~/dotfiles/nvim ~/.config/nvim
 else 
 	cp -r ~/dotfiles/nvim ~/.config/
 fi
 
-rm ~/.gitconfig; cp ~/dotfiles/.gitconfig ~/; brew install luarocks
+rm ~/.gitconfig
+cp ~/dotfiles/.gitconfig ~/ 
+brew install luarocks

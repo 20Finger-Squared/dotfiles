@@ -1,35 +1,31 @@
 return {
-  -- Plugin spec for lazy.nvim
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+      local function terminal_status()
+        if vim.bo.buftype == "terminal" then
+          return "TERMINAL"
+        end
+        return ""
+      end
+
       require("lualine").setup({
         options = {
-          theme = "dracula-nvim",
+          theme = "dracula",
           icons_enabled = true,
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
-          disabled_filetypes = { "NvimTree" },
+          globalstatus = true,
         },
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { { "filename", path = 1 } }, -- shows relative path
+          lualine_c = { "filename", terminal_status },
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress" },
           lualine_z = { "location" },
         },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        extensions = {},
       })
     end,
   },
