@@ -66,5 +66,8 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live Grep' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help Tags' })
+		vim.keymap.set("n", "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Telescope Registers" })
+
+    vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = 'Find files' })
   end,
 }
