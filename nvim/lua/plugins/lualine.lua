@@ -12,19 +12,23 @@ return {
 
       require("lualine").setup({
         options = {
-          theme = "dracula",
+          -- theme = "dracula",
           icons_enabled = true,
-          component_separators = { left = "", right = "" },
-          section_separators = { left = "", right = "" },
-          globalstatus = true,
+          -- component_separators = { left = "", right = "" },
+          -- section_separators = { left = "", right = "" },
+          -- globalstatus = true,
+          -- component_separators = { left = "|", right = "|" },
+          -- section_separators = { left = "|", right = "|" },
+          component_separators = { left = " ", right = " " },
+          section_separators = { left = " ", right = " " },
         },
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { "filename", terminal_status },
-          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_c = { {"filename", path = 3}, terminal_status },
+          lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
           lualine_y = { "progress" },
-          lualine_z = { "location" },
+					lualine_z = { "location" },
         },
       })
     end,

@@ -1,5 +1,5 @@
 return {
-  "Mofiqul/dracula.nvim",
+	{ "Mofiqul/dracula.nvim",
   config = function()
     require("dracula").setup({
       colors = {
@@ -7,6 +7,21 @@ return {
         black = "#000000",  -- also override the "black" color
       },
     })
-    vim.cmd.colorscheme("dracula")
   end,
+	},
+	{
+		"navarasu/onedark.nvim",
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require('onedark').setup {
+				colors = {
+					bg0 = "#000000",
+					bg1 = "#000000",
+				},
+				style = 'darker'
+			}
+			-- Enable theme
+			require('onedark').load()
+		end
+	}
 }

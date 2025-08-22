@@ -6,11 +6,13 @@ local opts = { noremap = true, silent = true }
 
 -- Toggle nvim-tree with <leader>e
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
-
+vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Force close buffer" })
 -- Close current window with <leader>q
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", opts)
 
-
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+--move highlighted stuffs
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Optional: delete to blackhole to avoid overwriting clipboard
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', opts)  -- Delete without affecting registers
 

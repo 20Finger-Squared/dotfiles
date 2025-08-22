@@ -12,6 +12,9 @@ return {
         "black",
         "pylint",
         "eslint_d",
+        "pylint",
+        "flake8",
+        "stylua",
       },
     })
   end,
