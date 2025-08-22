@@ -1,55 +1,22 @@
--- Set leader key to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 local opts = { noremap = true, silent = true }
 
--- Toggle nvim-tree with <leader>e
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
-vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Force close buffer" })
--- Close current window with <leader>q
-vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 --move highlighted stuffs
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Optional: delete to blackhole to avoid overwriting clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', opts)  -- Delete without affecting registers
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', opts) -- Delete without affecting registers
 
 -- Add more keymaps below as needed
 -- Save current file with <leader>w
-vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", opts)
 
 -- Quit current window with <leader>q
-vim.keymap.set("n", "<leader>q", "<cmd>quit<CR>", { noremap = true, silent = true })
-
--- -- Yank to system clipboard
--- vim.keymap.set({ "n", "v" }, "y", '"+y', { noremap = true, desc = "Yank to clipboard" })
--- vim.keymap.set("n", "yy", '"+yy', { noremap = true, desc = "Yank line to clipboard" })
---
--- -- Paste from system clipboard
--- vim.keymap.set({ "n", "v" }, "p", '"+p', { noremap = true, desc = "Paste from clipboard" })
--- vim.keymap.set({ "n", "v" }, "P", '"+P', { noremap = true, desc = "Paste before from clipboard" })
-
--- Command line enhancements
--- vim.keymap.set("n", ":", "q:$a", { desc = "Command line with cursor at end" })
--- vim.keymap.set("v", ":", "q:$a", { desc = "Command line with cursor at end (visual)" })
-vim.keymap.set("t", "<C-:>", "<C-\\><C-n>q:$a", { desc = "Exit terminal and enter command mode with cursor at end" })
+vim.keymap.set("n", "<leader>q", "<cmd>quit<CR>", opts)
 
 vim.keymap.set("n", "<C-;>", ":", { desc = "Enter command mode" })
 vim.keymap.set("v", "<C-;>", ":", { desc = "Enter command mode (visual)" })
 vim.keymap.set("t", "<C-;>", "<C-\\><C-n>:", { desc = "Exit terminal and enter command mode" })
-
--- Buffer navigation
-vim.keymap.set("n", "<C-M-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<C-M-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<C-M-k>", "<cmd>bp<CR>", { desc = "Buffer previous (alt)" })
-vim.keymap.set("n", "<C-M-j>", "<cmd>bn<CR>", { desc = "Buffer next (alt)" })
-
-vim.keymap.set("t", "<C-M-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer (terminal)" })
-vim.keymap.set("t", "<C-M-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer (terminal)" })
-vim.keymap.set("t", "<C-M-k>", "<cmd>bp<CR>", { desc = "Buffer previous (terminal)" })
-vim.keymap.set("t", "<C-M-j>", "<cmd>bn<CR>", { desc = "Buffer next (terminal)" })
 
 -- Move split positions
 vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to left" })
@@ -70,3 +37,28 @@ vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move to below split 
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move to above split from terminal" })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right split from terminal" })
 vim.keymap.set("n", "<leader>t", "<cmd>lua toggle_bottom_term()<CR>", { desc = "Toggle bottom terminal" })
+
+-- Telescope keymaps
+local builtin = require("telescope.builtin")
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live Grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help Tags' })
+vim.keymap.set("n", "<leader>re", builtin.registers, { desc = "Registers" })
+vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = 'Find files' })
+
+-- Harpoon
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+-- Add current file
+vim.keymap.set("n", "<leader>a", mark.add_file, { desc = "Harpoon Add File" })
+
+-- Toggle Harpoon UI
+vim.keymap.set("n", "<leader>m", ui.toggle_quick_menu, { desc = "Harpoon Menu" })
+
+-- Navigate to files 1–4
+vim.keymap.set("n", "<leader>1", ui.navfile(1), { desc = "Harpoon File 1" })
+vim.keymap.set("n", "<leader>2", ui.navfile(2), { desc = "Harpoon File 2" })
+vim.keymap.set("n", "<leader>3", ui.navfile(3), { desc = "Harpoon File 3" })
+vim.keymap.set("n", "<leader>4", ui.navfile(4), { desc = "Harpoon File 4" })
